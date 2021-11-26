@@ -15,8 +15,4 @@ export class CountryService {
   getByName(name: any){
     return this.http.get(`https://restcountries.com/v3.1/name/${name}`);
   }
-
-  getByRegion(region: any){
-    return this.http.get(`https://restcountries.com/v3.1/region/${region}`);
-  }
 }
