@@ -1,0 +1,35 @@
+<div class="wrapper">
+    <app-header></app-header>
+    <main class="flex-grow-1 overflow-auto bg-dark-body">
+        <div class="p-3 p-md-5">
+            <button class="btn btn-dark-header px-4 shadow" routerLink="/home"><span class="fa fa-arrow-left pr-2"></span>Back</button>
+            <div class="row align-items-center pt-5" *ngFor="let detail of details">
+                <div class="col-12 col-md-5">
+                    <figure class="mb-0 country-flag-detail shadow-lg">
+                        <img class="img-fluid" src="{{detail.flags.svg}}" alt="">
+                    </figure>
+                </div>
+                <div class="col-12 col-md-7 mt-4 mt-md-0 pl-3 pl-md-5">
+                    <h1 class="mb-3 text-white font-weight-bold">{{detail.name.common}}</h1>
+                    <div class="d-flex flex-column flex-md-row justify-content-md-between">
+                        <div>
+                            <p class="mb-1 text-white">Native Name: {{detail.altSpellings[1]}}</p>
+                            <p class="mb-1 text-white font-weight-medium">Population: <span class="pl-2 font-weight-normal">{{detail.population}}</span></p>
+                            <p class="mb-1 text-white font-weight-medium">Region: <span class="pl-2 font-weight-normal">{{detail.region}}</span></p>
+                            <p class="mb-1 text-white font-weight-medium">Sub Region: <span class="pl-2 font-weight-normal">{{detail.subregion}}</span></p>
+                            <p class="mb-1 text-white font-weight-medium">Capital: <span class="pl-2 font-weight-normal">{{detail.capital}}</span></p>
+                        </div>
+                        <div>
+                            <p class="mb-1 text-white font-weight-medium">Top Level Domain: <span class="pl-2 font-weight-normal">{{detail.tld}}</span></p>
+                            <p class="mb-1 text-white font-weight-medium" *ngFor="let currency of currency | keyvalue">Currency: <span class="pl-2 font-weight-normal">{{currency.key}}</span></p>
+                            <p class="mb-1 text-white font-weight-medium"><span>Language: </span><span class="pl-2 font-weight-normal" *ngFor="let language of languages | keyvalue">{{language.value}}, </span></p>
+                        </div>
+                    </div>
+                    <div class="mt-5">
+                        <p class="mb-0 text-white d-flex flex-wrap align-items-center"><span class="mb-3">Border Countries: </span><span class="bg-dark-header mb-3 px-3 rounded py-1 mx-2 shadow" *ngFor="let border of detail.borders">{{border}}</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>

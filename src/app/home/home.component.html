@@ -1,0 +1,40 @@
+<div class="wrapper">
+    <app-header></app-header>
+<main class="flex-grow-1 overflow-auto bg-dark-body">
+    <div class="p-3 p-md-5">
+        <div class="d-flex flex-wrap align-items-center justify-content-between pb-5">
+            <div class="input p-3 rounded d-flex align-items-center bg-dark-header text-white">
+                <span class="fa fa-search pl-3 text-gray-500"></span>
+                <input class="ml-4 w-100 bg-dark-header text-white" [(ngModel)]="countryName" (ngModelChange)="filterCountry()" #searchCountry type="search" name="countryName" id="countryName" placeholder="Search for a country...">
+            </div>
+            <div class="mt-3 mt-sm-0">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle shadow-sm p-3 border-0 bg-dark-header text-white" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                      Filter by region<span class="fa fa-angle-down pl-3"></span>
+                    </button>
+                    <div class="dropdown-menu bg-dark-header text-white" aria-labelledby="dropdownMenuButton">
+                      <p class="dropdown-item text-white text-capitalize cursor-pointer" *ngFor="let region of filterRegion" (click)="selectedRegion(region.name)">{{region.name}}</p>
+                    </div>
+                  </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-6 col-lg-3 mb-5" *ngFor="let country of countries">
+                <div class="card shadow-sm border-0 w-100 bg-dark-header text-white" [routerLink]="['/details',country.name.common]" (click)="getDetails(country.name.common)" style="width: 18rem;">
+                    <figure class="mb-0 country-flag">
+                        <img src="{{country.flags.svg}}" class="card-img-top" loading="lazy" alt={{country.name.common}}>
+                    </figure>
+                    <div class="card-body">
+                      <p class="card-text font-weight-bold">{{country.name.common}}</p>
+                      <div>
+                          <p class="mb-0 font-weight-bold">Population: <span class="font-weight-normal">{{country.population}}</span></p>
+                          <p class="mb-0 font-weight-bold">Region: <span class="font-weight-normal">{{country.region}}</span></p>
+                          <p class="mb-0 font-weight-bold">Capital: <span class="font-weight-normal">{{country.capital}}</span></p>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</div>
